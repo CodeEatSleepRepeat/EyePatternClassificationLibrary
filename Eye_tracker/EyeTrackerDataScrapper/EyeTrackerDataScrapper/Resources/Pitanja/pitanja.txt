@@ -1,0 +1,30 @@
+1. What will be the output of the program?
+2. What will be the output of the program?
+3. What will be the output of the program?
+4. Choose right statement
+5. What will be the output of the program?
+6. Which is valid in a class that extends class A?
+7. Which of the following line of code is suitable to start a thread?
+8. What will be the output of the program?
+9. Which statement is true?
+10. What will be the output of the program?
+11. What will be the output of the program? 
+12. What will be the output of the program?
+13. What will be the output of the program? 
+14. What will be the output of the program? 
+15. What will be the output of the program?
+16. What will be the output of the program (in jdk1.6 or above)?
+17. What will be the output of the program?
+18. Which statement is true?
+19. What will be the output of the program?
+20. What will be the output of the program?
+21. What will be the output of the program?
+22. What will be the output of the program?
+23. What will be the output of the program?
+24. What will be the output of the program?
+25. At what point is the Bar object, created on line 6, eligible for garbage collection?
+26. When is the Demo object eligible for garbage collection?
+27. After line 8 runs. how many objects are eligible for garbage collection?
+28. What causes compilation to fail?
+29. What will be the output of the program?
+30. What will be the output of the program?

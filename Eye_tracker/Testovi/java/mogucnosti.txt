@@ -1,0 +1,30 @@
+x = 0|x = 1|Compilation fails.|An exception is thrown at runtime.
+9 7 7 foo 7 7foo|72 34 34 foo34 34foo|9 7 7 foo34 34foo|72 7 34 foo34 7foo
+count = 0|count = 2|count = 3|count = 4
+If a is true and b is true then the output is "A && B"|If a is true and b is false then the output is "notB"|If a is false and b is true then the output is "ELSE"|If a is false and b is false then the output is "ELSE"
+Zero|Twelve|Default|Compilation fails
+finally|exception finished|finally exception finished|Compilation fails
+Thread t = new Thread(X);|Thread t = new Thread(X); t.start();|X run = new X(); Thread t = new Thread(run); t.start();|Thread t = new Thread(); x.run();
+Compilation fails|An exception occurs at runtime.|It prints "Thread one. Thread two."|The output cannot be determined.
+Prints "Inside Thread Inside Thread"|Prints "Inside Thread Inside Runnable"|Does not compile|Throws exception at runtime
+DeadLock|It print 12 12 12 12|Compilation Error|Cannot determine output.
+Line 5|B. Line 6|Line 12|Line 14
+bar|bar done|foo done|Compilation fails
+Line 11|Line 12|Line 14|Line 22
+42|42.5|43|bad number
+java|javac|javajavac|Compile error
+z|x z|y z|Compilation fails
+It prints f2[0] = 0.0|It prints f2[0] = NaN|An error at f2 = f1; causes compile to fail.|It prints the garbage value.
+Class B'S constructor is public.|Class B'S constructor has no arguments.|Class B'S constructor includes a call to this( ).|None of these.
+null null 42|0 0 42|0 42 42|0 0 0
+0|1|101|111
+41|42|50|51
+i = 0|i = 3|i = 4|Compilation fails.
+i = 1, j = 0|i = 1, j = 4|i = 3, j = 4|Compilation fails.
+finished|Exception|Compilation fails|Arithmetic Exception
+after line 12|after line 14|after line 7, when doBar() completes|after line 15, when main() completes
+After line 7|After line 8|After the start() method completes|When the instance running this code is made eligible for garbage collection.
+0|1|2|3
+Line 5|Line 6|Line 12|Line 14
+3.0|-3.0|NaN|Compilation fails.
+apa|app|apea|apep

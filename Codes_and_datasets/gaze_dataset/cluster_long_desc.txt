@@ -1,0 +1,12 @@
+Less than 10 different gazes on average. Spend less than 30 secons per question on average.
+Between 10 and 20 different gazes on average. Frequent looks on answers (more then 3 times per question on average). Frequent looks on code (more then 5 times per question on average). Spend more than 50 secons per question on average.
+Between 10 and 20 different gazes on average. Lots of time spent on code (average of at least 10 seconds per look). Spend more than 50 secons per question on average.
+Between 10 and 20 different gazes on average. Frequent looks on answers (more then 3 times per question on average). Frequent looks on code (more then 5 times per question on average). Look at the answers longer (average of at least 4 seconds per look). Some time spent looking at test question. Spend more than 50 secons per question on average.
+Between 10 and 20 different gazes on average. Frequent looks on answers (more then 3 times per question on average). Frequent looks on code (more then 5 times per question on average). Spend about 40 secons per question on average.
+Less than 10 different gazes on average. Look at the answers longer (average of at least 4 seconds per look). Lots of time spent on code (average of at least 10 seconds per look). Spend less than 20 secons per question on average.
+Between 10 and 20 different gazes on average. Frequent looks on answers (more then 3 times per question on average). Look at the answers longer (average of at least 4 seconds per look). Spend less than 30 secons per question on average.
+Frequent looks on answers (more then 3 times per question on average). Frequent looks on code (more then 5 times per question on average). More than 20 different gazes on average. Some time spent looking at test question. Spend about 40 secons per question on average.
+Frequent looks on code (more then 5 times per question on average). Frequent looks on question (more then 5 times per question on average). More than 20 different gazes on average. Some time spent looking at test question. Spend about 40 secons per question on average.
+Frequent looks at the back button. Less than 10 different gazes on average. Spend less than 10 secons per question on average.
+Less than 10 different gazes on average. Spend less than 10 secons per question on average.
+Less than 10 different gazes on average. Look at the answers longer (average of at least 4 seconds per look). Spend less than 20 secons per question on average.

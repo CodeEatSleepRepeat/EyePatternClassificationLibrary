@@ -1,0 +1,17 @@
+TEKST PITANJA:
+
+
+ When is the Demo object eligible for garbage collection?
+
+
+PONUDJENI ODGOVORI:
+
+A. After line 7 	
+B. After line 8
+C. After the start() method completes
+D. When the instance running this code is made eligible for garbage collection.
+
+
+TACAN ODGOVOR:
+	D
+

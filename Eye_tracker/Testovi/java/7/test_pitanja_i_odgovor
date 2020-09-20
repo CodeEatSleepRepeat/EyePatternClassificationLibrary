@@ -1,0 +1,18 @@
+TEKST PITANJA:
+
+ Which of the following line of code is suitable to start a thread ?
+
+
+
+PONUDJENI ODGOVORI:
+A. Thread t = new Thread(X);
+B. Thread t = new Thread(X); t.start();
+C. X run = new X(); Thread t = new Thread(run); t.start(); 	
+D. Thread t = new Thread(); x.run();
+
+TACAN ODGOVOR:
+
+	C
+
+
+

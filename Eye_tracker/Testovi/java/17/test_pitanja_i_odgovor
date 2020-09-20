@@ -1,0 +1,17 @@
+TEKST PITANJA:
+
+
+What will be the output of the program? 
+
+
+PONUDJENI ODGOVORI:
+
+A. It prints f2[0] = 0.0
+B. It prints f2[0] = NaN 	
+C. An error at f2 = f1; causes compile to fail.
+D. It prints the garbage value.
+
+
+TACAN ODGOVOR:
+	A
+

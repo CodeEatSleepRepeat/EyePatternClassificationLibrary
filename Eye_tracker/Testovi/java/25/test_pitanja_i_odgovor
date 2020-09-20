@@ -1,0 +1,18 @@
+TEKST PITANJA:
+
+
+ At what point is the Bar object, created on line 6, eligible for garbage collection?
+
+
+PONUDJENI ODGOVORI:
+
+A. after line 12
+B. after line 14 	
+C. after line 7, when doBar() completes
+D. after line 15, when main() completes
+
+
+
+TACAN ODGOVOR:
+	B
+

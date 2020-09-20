@@ -1,0 +1,65 @@
+Starting log
+Current question> 0 at 2019-12-25 13:29:30.688
+Current question> 1 at 2019-12-25 13:30:48.052
+Current question> 2 at 2019-12-25 13:34:05.065
+Current question> 3 at 2019-12-25 13:36:39.187
+Current question> 4 at 2019-12-25 13:37:58.887
+Current question> 5 at 2019-12-25 13:38:29.137
+Current question> 6 at 2019-12-25 13:39:53.622
+Current question> 7 at 2019-12-25 13:40:48.755
+Current question> 6 at 2019-12-25 13:41:16.994
+Current question> 7 at 2019-12-25 13:41:23.184
+Current question> 8 at 2019-12-25 13:42:14.410
+Current question> 9 at 2019-12-25 13:42:42.628
+Current question> 10 at 2019-12-25 13:44:02.604
+Current question> 11 at 2019-12-25 13:45:47.485
+Current question> 12 at 2019-12-25 13:47:05.154
+Current question> 13 at 2019-12-25 13:47:46.181
+Current question> 14 at 2019-12-25 13:48:49.573
+Current question> 15 at 2019-12-25 13:50:19.637
+Current question> 16 at 2019-12-25 13:51:00.594
+Current question> 17 at 2019-12-25 13:51:55.055
+Current question> 18 at 2019-12-25 13:52:46.883
+Current question> 19 at 2019-12-25 13:53:37.534
+Current question> 20 at 2019-12-25 13:55:28.588
+Current question> 21 at 2019-12-25 13:56:48.740
+Current question> 22 at 2019-12-25 13:57:08.307
+Current question> 23 at 2019-12-25 13:57:52.826
+Current question> 24 at 2019-12-25 13:58:38.016
+Current question> 25 at 2019-12-25 13:59:34.365
+Current question> 26 at 2019-12-25 14:00:26.509
+Current question> 27 at 2019-12-25 14:00:47.568
+Current question> 28 at 2019-12-25 14:01:36.320
+Current question> 29 at 2019-12-25 14:02:35.551
+Pitanje 1 nije tačno odgovoreno - tačan odgovor je C, Vaš odgovor je B
+Pitanje 2 je tačno odgovoreno
+Pitanje 3 je tačno odgovoreno
+Pitanje 4 je tačno odgovoreno
+Pitanje 5 je tačno odgovoreno
+Pitanje 6 nije tačno odgovoreno - tačan odgovor je A, Vaš odgovor je B
+Pitanje 7 nije tačno odgovoreno - tačan odgovor je C, Vaš odgovor je B
+Pitanje 8 nije tačno odgovoreno - tačan odgovor je B, Vaš odgovor je C
+Pitanje 9 je tačno odgovoreno
+Pitanje 10 nije tačno odgovoreno - tačan odgovor je B, Vaš odgovor je A
+Pitanje 11 je tačno odgovoreno
+Pitanje 12 je tačno odgovoreno
+Pitanje 13 nije tačno odgovoreno - tačan odgovor je D, Vaš odgovor je A
+Pitanje 14 nije tačno odgovoreno - tačan odgovor je C, Vaš odgovor je D
+Pitanje 15 nije tačno odgovoreno - tačan odgovor je C, Vaš odgovor je D
+Pitanje 16 je tačno odgovoreno
+Pitanje 17 je tačno odgovoreno
+Pitanje 18 nije tačno odgovoreno - tačan odgovor je B, Vaš odgovor je D
+Pitanje 19 nije tačno odgovoreno - tačan odgovor je B, Vaš odgovor je C
+Pitanje 20 nije tačno odgovoreno - tačan odgovor je C, Vaš odgovor je A
+Pitanje 21 nije tačno odgovoreno - tačan odgovor je D, Vaš odgovor je C
+Pitanje 22 je tačno odgovoreno
+Pitanje 23 je tačno odgovoreno
+Pitanje 24 nije tačno odgovoreno - tačan odgovor je C, Vaš odgovor je D
+Pitanje 25 nije tačno odgovoreno - tačan odgovor je B, Vaš odgovor je A
+Pitanje 26 nije tačno odgovoreno - tačan odgovor je D, Vaš odgovor je C
+Pitanje 27 je tačno odgovoreno
+Pitanje 28 nije tačno odgovoreno - tačan odgovor je D, Vaš odgovor je A
+Pitanje 29 nije tačno odgovoreno - tačan odgovor je C, Vaš odgovor je B
+Pitanje 30 nije tačno odgovoreno - tačan odgovor je B, Vaš odgovor je D
+Tacno odgovorenih 12 
+

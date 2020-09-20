@@ -1,0 +1,49 @@
+Private Sub SaveAllSheetsAsCSV()
+On Error GoTo Heaven
+
+' each sheet reference
+Dim Sheet As Worksheet
+' path to output to
+Dim OutputPath As String
+' name of each csv
+Dim OutputFile As String
+
+Application.ScreenUpdating = False
+Application.DisplayAlerts = False
+Application.EnableEvents = False
+
+' ask the user where to save
+OutputPath = InputBox("Enter a directory to save to", "Save to directory", Path)
+
+If OutputPath <> "" Then
+
+    ' save for each sheet
+    For Each Sheet In Sheets
+
+        OutputFile = OutputPath & "\" & Sheet.Name & ".csv"
+
+        ' make a copy to create a new book with this sheet
+        ' otherwise you will always only get the first sheet
+        Sheet.Copy
+        ' this copy will now become active
+        ActiveWorkbook.SaveAs FileName:=OutputFile, FileFormat:=xlCSV, CreateBackup:=False
+        ActiveWorkbook.Close
+    Next
+
+End If
+
+Finally:
+Application.ScreenUpdating = True
+Application.DisplayAlerts = True
+Application.EnableEvents = True
+
+Exit Sub
+
+Heaven:
+MsgBox "Couldn't save all sheets to CSV." & vbCrLf & _
+        "Source: " & Err.Source & " " & vbCrLf & _
+        "Number: " & Err.Number & " " & vbCrLf & _
+        "Description: " & Err.Description & " " & vbCrLf
+
+GoTo Finally
+End Sub

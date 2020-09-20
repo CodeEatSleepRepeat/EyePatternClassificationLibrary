@@ -1,0 +1,17 @@
+TEKST PITANJA:
+
+Choose right statement
+
+
+
+PONUDJENI ODGOVORI:
+A. If a is true and b is true then the output is "A && B"
+B. If a is true and b is false then the output is "notB" 	
+C. If a is false and b is true then the output is "ELSE"
+D. If a is false and b is false then the output is "ELSE"
+
+
+TACAN ODGOVOR:
+
+	C
+

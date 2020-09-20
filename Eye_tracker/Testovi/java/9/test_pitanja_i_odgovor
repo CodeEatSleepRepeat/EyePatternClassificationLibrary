@@ -1,0 +1,18 @@
+TEKST PITANJA:
+
+What will be the output of the program? 
+
+
+
+PONUDJENI ODGOVORI:
+
+A. Prints "Inside Thread Inside Thread"
+B. Prints "Inside Thread Inside Runnable"
+C. Does not compile 	
+D. Throws exception at runtime
+
+TACAN ODGOVOR:
+
+A
+
+

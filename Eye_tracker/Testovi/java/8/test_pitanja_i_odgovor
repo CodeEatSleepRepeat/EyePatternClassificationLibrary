@@ -1,0 +1,18 @@
+TEKST PITANJA:
+
+What will be the output of the program? 
+
+
+
+PONUDJENI ODGOVORI:
+
+A. Compilation fails
+B. An exception occurs at runtime. 	
+C. It prints "Thread one. Thread two."
+D. The output cannot be determined.
+
+
+TACAN ODGOVOR:
+	B
+
+
