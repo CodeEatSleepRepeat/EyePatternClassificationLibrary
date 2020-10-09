@@ -10,15 +10,13 @@ Usage:
     test.py -i <inputfile> -o <outputfile>
     test.py -i <inputfile> -o <outputfile> --quiet
     test.py -i <inputfile> -o <outputfile> -v
-    test.py -i <inputfile> -roi <roifile>
     test.py --input <inputfile> --output <outputfile> --verbose
 
 Meaning:
     -i or --input   --> Input csv file with 1 look pattern or file with many csv files.
     -o or --output  --> Output csv file to store vectors of information for look patern and clusters'.
-    --quiet         --> Do not write cluster numbers on console. Let it be empty. This requires -o argument!
+    --quiet    --> Do not write cluster numbers on console. Let it be empty. This requires -o argument!
     -v or --verbose --> Print everything on console.
-    -roi            --> Text file that contains all regions of interest that can be found in data
 
 Good luck user!
 """
@@ -35,10 +33,8 @@ global inputfile
 global outputfile
 global verbose
 global quiet
-global roi
 inputfile = ''
 outputfile = ''
-roi = ''
 verbose = False
 quiet = False
 
@@ -51,29 +47,6 @@ def get_input_data():
     else:
         print("\nBad input file! Check input arguments and try again.")
         sys.exit(2)
-
-# check if ROI input path is file or directory and return ROI data from it in form of vector of ROI
-def get_roi_data():
-    if roi is '':
-        return ['kod', 'odgovori', 'pitanje', 'pitanje-kod', 'prazno', 'prethodno', 'sledece']
-    
-    if os.path.isfile(roi):
-        with open(roi, encoding="utf8") as f:
-            lines = f.read().splitlines()
-        return lines
-    else:
-        print("\nBad ROI file! Check input arguments and try again.")
-        sys.exit(2)
-
-# get description data if exists
-def get_description(filepath):
-    if os.path.isfile(filepath):
-        with open(filepath, encoding="utf8") as f:
-            lines = f.read().splitlines()
-        return lines
-    else:
-        return None
-
 
 # collecting all csv files from forwarded directory
 def collect_csv_data_collection_from_directory(path):
@@ -129,25 +102,10 @@ def total_secons_in_question(duration):
 def total_regions_in_question(aoi):
     return len(aoi)
 
-# init vector to length of no. of regions - init with 0.0
-def init_vector_real():
-    vector = {}
-    return vector.fromkeys(roi,0.0)
-
-# init vector to length of no. of regions - init with empty array []
-def init_vector_array():
-    vector = {}
-    return vector.fromkeys(roi,[])
-
-# init 2D vector to dim of no. of regions x no. of regions
-def init_2d_vector():
-    vector = {}
-    return vector.fromkeys(roi,vector.fromkeys(roi,0.0))
-
 # get sec on all regions [vector]
 def seconds_per_region(duration, aoi):
     # regije su: kod, odgovori, pitanje, pitanje-kod, prazno, prethodno, sledece
-    vector = init_vector_real()
+    vector = { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 }
     
     for i in range(0, len(duration)):
         vector[aoi[i]] += duration[i]
@@ -157,7 +115,7 @@ def seconds_per_region(duration, aoi):
 # get no. of looks at all regions [vector]
 def no_looks_per_region(aoi):
     # regije su: kod, odgovori, pitanje, pitanje-kod, prazno, prethodno, sledece
-    vector = init_vector_real()
+    vector = { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 }
     
     for i in range(0, len(aoi)):
         vector[aoi[i]] += 1
@@ -169,8 +127,8 @@ def mean_seconds_per_region(duration, aoi):
     from statistics import mean
     
     # regije su: kod, odgovori, pitanje, pitanje-kod, prazno, prethodno, sledece
-    vector = init_vector_array()
-
+    vector = { 'kod': [], 'odgovori': [], 'pitanje': [], 'pitanje-kod': [], 'prazno': [], 'prethodno': [], 'sledece': [] }
+    
     for i in range(0, len(aoi)):
         vector[aoi[i]].append(duration[i])
 
@@ -186,8 +144,22 @@ def mean_seconds_per_region(duration, aoi):
 # get top viewed region before region x (for all regions) [vector]
 def top_region_before_per_region(duration, aoi):
     # regije su: kod, odgovori, pitanje, pitanje-kod, prazno, prethodno, sledece
-    vector = init_2d_vector()
-
+    vector = { 'kod':
+                { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 },
+            'odgovori': 
+                { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 },
+            'pitanje': 
+                { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 },
+            'pitanje-kod': 
+                { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 },
+            'prazno': 
+                { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 },
+            'prethodno': 
+                { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 },
+            'sledece': 
+                { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 }
+            }
+    
     previous = aoi[0]
 
     # move through all regions except first one and add 1 for curren area whose previous one was "previous" area
@@ -212,7 +184,21 @@ def top_region_before_per_region(duration, aoi):
 # get top viewed region after region x (for all regions) [vector]
 def top_region_after_per_region(duration, aoi):
     # regije su: kod, odgovori, pitanje, pitanje-kod, prazno, prethodno, sledece
-    vector = init_2d_vector()
+    vector = { 'kod':
+                { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 },
+            'odgovori': 
+                { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 },
+            'pitanje': 
+                { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 },
+            'pitanje-kod': 
+                { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 },
+            'prazno': 
+                { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 },
+            'prethodno': 
+                { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 },
+            'sledece': 
+                { 'kod': 0.0, 'odgovori': 0.0, 'pitanje': 0.0, 'pitanje-kod': 0.0, 'prazno': 0.0, 'prethodno': 0.0, 'sledece': 0.0 }
+            }
     
     current = aoi[0]
 
@@ -239,13 +225,13 @@ def top_region_after_per_region(duration, aoi):
 def call_information_methods(duration, aoi):
     vector = []
 
-    i1 = total_secons_in_question(duration) # len = 1
-    i2 = total_regions_in_question(aoi) # len = 1
-    i3 = seconds_per_region(duration, aoi) # len = len(aoi)
-    i4 = no_looks_per_region(aoi) # len = len(aoi)
-    i5 = mean_seconds_per_region(duration, aoi) # len = len(aoi)
-    i6 = top_region_before_per_region(duration, aoi) # len = len(aoi)
-    i7 = top_region_after_per_region(duration, aoi) # len = len(aoi)
+    i1 = total_secons_in_question(duration)
+    i2 = total_regions_in_question(aoi)
+    i3 = seconds_per_region(duration, aoi)
+    i4 = no_looks_per_region(aoi)
+    i5 = mean_seconds_per_region(duration, aoi)
+    i6 = top_region_before_per_region(duration, aoi)
+    i7 = top_region_after_per_region(duration, aoi)
 
     vector.append(i1)
     vector.append(i2)
@@ -255,7 +241,7 @@ def call_information_methods(duration, aoi):
     vector.extend(i6)
     vector.extend(i7)
 
-    return vector   # len = 5 * len(aoi) + 2
+    return vector
 
 # get vector of question statistics based on question
 def get_question_based_information_vector(data):
@@ -268,28 +254,22 @@ def get_question_based_information_vector(data):
 
 # add row and column label before saving information vector to csv file
 def add_labels_to_vector(vector):
-    col = ['cluster_no']
-
-    # total vector length
-    for i in range(len(roi)*5+2):
-        col.append(str(i))
-
-    df = pd.DataFrame(vector, columns=col)
+    df = pd.DataFrame(vector,
+                    columns=['cluster_no', '0', '1', '2', '3', '4', '5','6',
+    '7', '8', '9', '10', '11', '12', '13', '14', '15', '16',
+    '17', '18', '19', '20', '21', '22', '23', '24', '25', '26',
+    '27', '28', '29', '30', '31', '32', '33', '34', '35', '36'])
 
     return [df.columns.values.tolist()] + df.values.tolist()
 
 # classify the data into one of the twelve different classes
 def predict(data, model):
-    try:
-        x = model.predict([data])
-        return x[0]
-    except:
-        print("\nModel.predict() expects input dimension {} - got {}! Please check your model input dimension and number of different ROI!\n".format(model.coef_.shape[1], len(data)))
-        sys.exit(2)
+    x = model.predict([data])
+    return x[0]
 
 # load classification model from file named 'pickle_model.pkl'
 def load_model():
-    pkl_filename = "D:\\Users\Boris\Documents\Fakultet\Master\SOTS\Projekat\EyePatternClassificationLibrary\Codes_and_datasets\pickle_model.pkl"
+    pkl_filename = "pickle_model.pkl"
     with open(pkl_filename, 'rb') as file:
         pickle_model = pickle.load(file)
     return pickle_model
@@ -300,7 +280,6 @@ def main(argv):
     global outputfile
     global verbose
     global quiet
-    global roi
     
     parser = argparse.ArgumentParser(description="Run the pcl.py script to classify the look patern of students into one of twelve classes.")
     group = parser.add_mutually_exclusive_group()
@@ -308,39 +287,28 @@ def main(argv):
     group.add_argument("-q", "--quiet", action="store_true", help="Do not write cluster numbers on console. Let it be empty. This requires -o argument!")
     parser.add_argument("-i","--inputfile", type=str, help="Input csv file with 1 look pattern or file with many csv files. The predefined location is './gaze_dataset/csv/'.")
     parser.add_argument("-o","--outputfile", type=str, help="Output csv file to store vectors of information for look patern and clusters' short description.")
-    parser.add_argument("-r","--roi", type=str, help="Text file that contains all regions of interest that can be found in data (one region per line).")
     args = parser.parse_args()
  
     
     if args.verbose:
         verbose = True
-
     if args.quiet:
         quiet = True
-
     if args.inputfile is None:
         inputfile = "./gaze_dataset/csv/"
     else:
         inputfile = args.inputfile
-
     if args.outputfile is not None:
         outputfile = args.outputfile
     
-    if args.roi is not None:
-        roi = args.roi
-    
     if quiet and outputfile == '':
-        print("usage: pcl.py [-h] [-v | -q] [-i INPUTFILE] [-o OUTPUTFILE] [-r ROIFILE]\npcl.py: error: argument -q/--quiet: not allowed without argument -o/--outputfile")
+        print("usage: pcl.py [-h] [-v | -q] [-i INPUTFILE] [-o OUTPUTFILE]\npcl.py: error: argument -q/--quiet: not allowed without argument -o/--outputfile")
         sys.exit(2)
 
     if not quiet:
         print('Input file is ', inputfile)
-
     if outputfile != '' and not quiet:
         print('Output file is ', outputfile)
-    
-    if roi != '' and not quiet:
-        print('ROI file is ', roi)
 
 if __name__ == "__main__":
    main(sys.argv[1:])
@@ -350,20 +318,46 @@ if __name__ == "__main__":
 model = load_model()
 
 information_vector = []
-cluster_type_short_description = get_description(".\gaze_dataset\cluster_short_desc.txt")
-cluster_type_long_description = get_description(".\gaze_dataset\cluster_long_desc.txt")
+cluster_type_short_description = [
+    "Fast and focused",
+    "Thorough, where code and answer are essential",
+    "Thorough with accent on code",
+    "Thorough, where question and answer are essential",
+    "Fast and thorough, where code and answer are essential",
+    "Fast and focused only on question and answer",
+    "Focused on answers",
+    "Superficially, where code and answer are essential",
+    "Superficially, where code and question are essential",
+    "Haven't studied, trying to find answers in previous questions",
+    "Haven't studied, don't care",
+    "Haven't studied, trying to guess using answers"
+]
 
-roi = get_roi_data()
+cluster_type_long_description = [
+    "Less than 10 different gazes on average. Spend less than 30 secons per question on average.",
+    "Between 10 and 20 different gazes on average. Frequent looks on answers (more then 3 times per question on average). Frequent looks on code (more then 5 times per question on average). Spend more than 50 secons per question on average.",
+    "Between 10 and 20 different gazes on average. Lots of time spent on code (average of at least 10 seconds per look). Spend more than 50 secons per question on average.",
+    "Between 10 and 20 different gazes on average. Frequent looks on answers (more then 3 times per question on average). Frequent looks on code (more then 5 times per question on average). Look at the answers longer (average of at least 4 seconds per look). Some time spent looking at test question. Spend more than 50 secons per question on average.",
+    "Between 10 and 20 different gazes on average. Frequent looks on answers (more then 3 times per question on average). Frequent looks on code (more then 5 times per question on average). Spend about 40 secons per question on average.",
+    "Less than 10 different gazes on average. Look at the answers longer (average of at least 4 seconds per look). Lots of time spent on code (average of at least 10 seconds per look). Spend less than 20 secons per question on average.",
+    "Between 10 and 20 different gazes on average. Frequent looks on answers (more then 3 times per question on average). Look at the answers longer (average of at least 4 seconds per look). Spend less than 30 secons per question on average.",
+    "Frequent looks on answers (more then 3 times per question on average). Frequent looks on code (more then 5 times per question on average). More than 20 different gazes on average. Some time spent looking at test question. Spend about 40 secons per question on average.",
+    "Frequent looks on code (more then 5 times per question on average). Frequent looks on question (more then 5 times per question on average). More than 20 different gazes on average. Some time spent looking at test question. Spend about 40 secons per question on average.",
+    "Frequent looks at the back button. Less than 10 different gazes on average. Spend less than 10 secons per question on average.",
+    "Less than 10 different gazes on average. Spend less than 10 secons per question on average.",
+    "Less than 10 different gazes on average. Look at the answers longer (average of at least 4 seconds per look). Spend less than 20 secons per question on average."
+]
+
+
 test_data = get_input_data()
+test_data = collect_csv_data_collection_from_directory("./gaze_dataset/csv/")
 for i in range(0, len(test_data)):
     current_info = get_question_based_information_vector(test_data[i])
     cluster_prediction = predict(current_info, model)
     current_info.insert(0,cluster_prediction)
     information_vector.append(current_info)
     
-    if cluster_type_long_description is None or cluster_type_short_description is None:
-        print("Pattern number {} belongs to cluster {}".format(i+1, cluster_prediction))
-    elif not quiet and not verbose:
+    if not quiet and not verbose:
         print("Pattern number {} belongs to cluster '{}'".format(i+1, cluster_type_short_description[cluster_prediction-1]))
     elif verbose:
         print("\nPattern number {} belongs to cluster '{}'. Properties of this cluster are: '{}'".format(i+1, cluster_type_short_description[cluster_prediction-1], cluster_type_long_description[cluster_prediction-1]))
